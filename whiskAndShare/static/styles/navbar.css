@@ -1,0 +1,20 @@
+body{
+    margin: 0;
+    
+}
+
+a {
+   text-decoration: none;
+   line-height: 20px;
+   font-size: 20px;
+   padding: 10px;
+}
+
+.navbar{
+    background-color: bisque;
+    height: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+}

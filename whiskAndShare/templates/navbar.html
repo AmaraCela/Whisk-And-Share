@@ -1,7 +1,12 @@
-<a href="">Whisp and Share</a>
-
-<div class="nav">
-    <a href="">Add recipes</a>
-    <a href="">Connections</a>
-    <a href="">Notifications</a>
+{% load static %}
+<link rel="stylesheet" href="{% static 'static/navbar.css '%}">
+<div class="navbar">
+    <div class="logo-div">
+        <a href="{% url 'home'%}">Whisk and Share</a>
+    </div>
+    <div class="nav">
+        <a href="{% url 'addRecipe'%}">Add recipes</a>
+        <a href="">Connections</a>
+        <a href="">Notifications</a>
+    </div>
 </div>

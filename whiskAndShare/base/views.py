@@ -18,7 +18,7 @@ def addRecipe(request):
     form = forms.FormRecipe()
     
     if request.method=='POST':
-        form = forms.FormRecipe(request.POST)
+        form = forms.FormRecipe(request.POST, request.FILES)
         if form.is_valid():
             form.save()
     context = {"form":form}
