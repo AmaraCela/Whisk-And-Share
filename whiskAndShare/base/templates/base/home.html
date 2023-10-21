@@ -1,10 +1,11 @@
-{% include 'main.html' %}
+{% extends 'main.html' %}
 {% block content%}
 <h3>Welcome to the home page!</h3>
 <hr>
 {% for recipe in recipes %}
 <h5>{{recipe.title}}</h5>
 <p>{{recipe.body}}</p>
+<img src="{{recipe.image}}" alt="nothing">
 <hr>
 {% endfor %}
 {% endblock %}
