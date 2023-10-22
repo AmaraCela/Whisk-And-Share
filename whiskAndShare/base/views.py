@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from . import models
 from whiskAndShare import settings
 from . import forms
+
 
 
 # Create your views here.
@@ -20,14 +21,15 @@ def addRecipe(request):
     if request.method=='POST':
         form = forms.FormRecipe(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            recipe = form.save(commit=False)
+            recipe.author = request.user
+            recipe.save()
+            return redirect('home')
     context = {"form":form}
     return render(request, 'base/addRecipes.html', context)
-    # form = RoomForm()
-    # if request.method == 'POST':
-    #     form = RoomForm(request.POST)
-    #     if form.is_valid():
-    #         room = form.save(commit = False)
-    #         room.host = request.user
-    #         room.save()
-    #         return redirect('home')
+
+def profile(request):
+    user = None
+    user = request.user
+    context = {'user':user}
+    return render(request, 'base/profile.html',context)

@@ -1,0 +1,46 @@
+body{
+    background-color:rgb(243, 219, 222);
+}
+
+#welcome{
+    font-size: 16px;
+    margin: 0;
+    line-height: 16px;
+    padding: 5px;
+}
+
+.author{
+    font-size: 16px;
+    margin: 0;
+    line-height: 16px;
+    padding: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.inner-home{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+.home-recipe{
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+}
+
+.recipe-infos{
+    padding-left: 15px;
+}
+
+.recipe-date{
+    text-align: end;
+}
+
+.img-class{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.recipe-img{
+    height: 80%;
+    width: 80%;
+}
