@@ -1,4 +1,21 @@
 {% extends 'main.html' %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{%static 'styles/profile.css'%}">
+{% endblock styles %}
 {% block content %}
-<h1>Welcome {{user}} </h1>
+<div class="profile-div">
+    <h1>Welcome {{user}} </h1>
+    <h4 class="your-recipes">Your recipes:</h4>
+    {% for recipe in recipes %}
+    <div class="recipe-block">
+        <p class="recipe-title">{{recipe.title}}</p>
+        <p class="recipe-body">{{recipe.body}}</p>
+        {% if recipe.image %}
+        <img src="{{recipe.image}}" alt="">
+        {% endif %}
+        <input type="submit" value="Delete">
+    </div>
+    {% endfor %}
+</div>
 {% endblock content %}

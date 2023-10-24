@@ -1,5 +1,7 @@
 body{
-    background-color:rgb(243, 219, 222);
+    background-color: #caafaf;
+    /* background-color:#d7d7d7; */
+    /* background-color:#fe7240; */
 }
 
 #welcome{
@@ -19,12 +21,23 @@ body{
 
 .inner-home{
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 5fr 2fr;
+    position: absolute;
+    top: 100px;
+    z-index: -1;
+    background-color: rgb(234 230 226);
 }
 
 .home-recipe{
     display: grid;
     grid-template-columns: 3fr 2fr;
+    padding: 10px;
+    margin: 10px;
+    background-color: #d6c8c8;
+}
+
+.home-recipe:hover {
+    box-shadow: 5px 5px 5px gray;
 }
 
 .recipe-infos{
@@ -43,4 +56,16 @@ body{
 .recipe-img{
     height: 80%;
     width: 80%;
+}
+
+.recepies-div{
+    background-color: rgb(234 230 226);
+}
+
+.side-div{
+    background-color: #caafaf;
+}
+
+.side-p{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

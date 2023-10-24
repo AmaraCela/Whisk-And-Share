@@ -1,0 +1,19 @@
+body{
+    margin: 0;
+}
+
+h1{
+    margin: 0;
+}
+
+.your-recipes{
+    margin: 0;
+}
+
+.profile-div{
+    position: absolute;
+    top: 100px;
+}
+.recipe-block{
+    background-color: rgb(234 230 226);
+}

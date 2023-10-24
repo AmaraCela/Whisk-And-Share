@@ -31,5 +31,6 @@ def addRecipe(request):
 def profile(request):
     user = None
     user = request.user
-    context = {'user':user}
+    recipes = models.Recipe.objects.filter(author = request.user)
+    context = {'user':user, 'recipes':recipes}
     return render(request, 'base/profile.html',context)

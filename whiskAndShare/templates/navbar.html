@@ -6,6 +6,12 @@
         <a href="{% url 'addRecipe'%}">Add recipes</a>
         <a href="">Connections</a>
         <a href="">Notifications</a>
-        <a href="{%url 'profile'%}">Profile</a>
+        <a href="{%url 'profile'%}">
+           {%if request.user%} 
+           {{request.user}}
+           {% else %}
+           Profile
+           {% endif %}
+        </a>
     </div>
 </div>

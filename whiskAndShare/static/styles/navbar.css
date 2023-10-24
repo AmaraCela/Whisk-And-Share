@@ -1,6 +1,5 @@
 body{
-    margin: 0;
-    
+    margin: 0;  
 }
 
 a {
@@ -8,13 +7,17 @@ a {
    line-height: 20px;
    font-size: 20px;
    padding: 10px;
+   color: #d7d7d7;
+   /* color:#272d2f; */
 }
 
 .navbar{
-    background-color: bisque;
-    height: 80px;
+    background-color: #5b1919;
+    height: 90px;
     display: flex;
     flex-wrap: wrap;
     align-content: center;
     justify-content: space-between;
+    width: 100%;
+    position: fixed;
 }

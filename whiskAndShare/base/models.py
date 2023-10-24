@@ -24,3 +24,9 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text[:30]
+
+class Reply(models.Model):
+    text = models.TextField()
+    date = models.DateField(auto_now_add=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    main_comment = models.ForeignKey(Comment, on_delete=models.CASCADE)

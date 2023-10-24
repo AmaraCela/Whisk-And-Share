@@ -4,8 +4,6 @@
 <link rel="stylesheet" href="{% static 'styles/home.css'%}">
 {% endblock styles%}
 {% block content%}
-<h5 id="welcome">Welcome to the home page!</h5>
-<hr>
 <div class="inner-home">
     <div class="recepies-div">
         {% for recipe in recipes %}
@@ -16,7 +14,9 @@
                 <p class="recipe-body">{{recipe.body}}</p>
             </div>
             <div class="img-class">
+                {% if recipe.image %}
                 <img src="{{recipe.image}}" alt="nothing" class="recipe-img">
+                {% endif %}
             </div>
         <p class="recipe-date">{{recipe.date |timesince }}</p>
         </div>
@@ -24,7 +24,7 @@
         {% endfor %}
     </div>
     <div class="side-div">
-        <p>You need to add friends to see their activity</p>
+        <p class="side-p"> You need to add friends to see their activity.</p>
     </div>
 </div>
 {% endblock %}
