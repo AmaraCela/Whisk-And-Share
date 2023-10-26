@@ -14,7 +14,8 @@
         {% if recipe.image %}
         <img src="{{recipe.image}}" alt="">
         {% endif %}
-        <input type="submit" value="Delete">
+        <a href="{% url 'deleteRecipe' recipe.id %}">Delete</a>
+        <a href="">Edit</a>
     </div>
     {% endfor %}
 </div>

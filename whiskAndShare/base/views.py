@@ -34,3 +34,17 @@ def profile(request):
     recipes = models.Recipe.objects.filter(author = request.user)
     context = {'user':user, 'recipes':recipes}
     return render(request, 'base/profile.html',context)
+
+
+def signUp(request):
+    return render(request, 'base/signUp.html')
+
+def login(request):
+    return render(request, 'base/login.html')
+
+def deleteRecipe(request, id):
+    if request.method == 'POST':
+        models.Recipe.objects.get(id=id).delete()
+        return redirect('profile')
+    context = {}
+    return render(request, 'base/deleteRecipe.html', context)
