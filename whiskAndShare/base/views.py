@@ -37,6 +37,14 @@ def profile(request):
 
 
 def signUp(request):
+    if request.method == 'POST':
+        if models.User.objects.filter(username=request.POST.get("username")).count() == 0:
+            username = request.POST.get("username")
+            password = request.POST.get("password")
+            user = models.User(username=username, password=password)
+            user.save()
+            return redirect('home')
+
     return render(request, 'base/signUp.html')
 
 def login(request):

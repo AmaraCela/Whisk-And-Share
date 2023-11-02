@@ -6,9 +6,14 @@
     <title>WhiskAndShare</title>
 </head>
 <body>
-    <h3>Welcome to Whisk and Share</h3>
+    <h3 class="welcome">Welcome to Whisk and Share</h3>
     <div class="signup-div">
-        
+        <form method="POST">
+            {% csrf_token %}
+            <label for="username">Username: </label><input id="username" type="text" name="username"><br>
+            <label for="password">Password: </label><input id="password" type="text" name="password"><br>
+            <input type="submit" value="Sign Up">
+        </form>
     </div>
 </body>
 </html>
