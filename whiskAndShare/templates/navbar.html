@@ -1,5 +1,7 @@
+{% load static %}
 <div class="navbar">
     <div class="logo-div">
+        <img class="logo" src="{%static 'images/whisk_527770.png'%}" alt="">
         <a href="{% url 'home'%}">Whisk and Share</a>
     </div>
     <div class="nav">
@@ -7,10 +9,10 @@
         <a href="">Connections</a>
         <a href="">Notifications</a>
         <a href="{%url 'profile'%}">
-           {%if request.user%} 
+           {%if request.user != AnonymousUser %}
            {{request.user}}
            {% else %}
-           Profile
+           Login
            {% endif %}
         </a>
     </div>

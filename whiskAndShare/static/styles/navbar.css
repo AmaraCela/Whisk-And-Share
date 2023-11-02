@@ -21,3 +21,19 @@ a {
     width: 100%;
     position: fixed;
 }
+
+.logo{
+    height: 40px;
+    width: 40px;
+    margin-left: 10px;
+}
+
+.logo-div{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.nav{
+    display: flex;
+}

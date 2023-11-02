@@ -25,7 +25,7 @@ body{
     position: absolute;
     top: 100px;
     z-index: -1;
-    background-color: rgb(234 230 226);
+    /* background-color: rgb(234 230 226); */
 }
 
 .home-recipe{
@@ -59,13 +59,23 @@ body{
 }
 
 .recepies-div{
-    background-color: rgb(234 230 226);
+    /* background-color: rgb(234 230 226); */
 }
 
 .side-div{
-    background-color: #caafaf;
+    margin-top: 10px;
+    background-color: #ffcb0052;
 }
 
 .side-p{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    padding: 5px;
+    text-align: center;
+}
+
+#comment{
+    height: 42px;
+    width: 42px;
+    cursor: pointer;
 }

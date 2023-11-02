@@ -18,7 +18,8 @@
                 <img src="{{recipe.image}}" alt="nothing" class="recipe-img">
                 {% endif %}
             </div>
-        <p class="recipe-date">{{recipe.date |timesince }}</p>
+            <img id="comment" src="{% static 'images/comment.png' %}" alt="">
+            <p class="recipe-date">{{recipe.date |timesince }}</p>
         </div>
         <hr>
         {% endfor %}
