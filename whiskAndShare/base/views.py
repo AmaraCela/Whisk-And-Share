@@ -3,12 +3,10 @@ from django.http import HttpResponse
 from . import models
 from whiskAndShare import settings
 from . import forms
-
-
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
-
-
 
 def home(request):
     recipes = models.Recipe.objects.all()
@@ -37,17 +35,19 @@ def profile(request):
 
 
 def signUp(request):
+    form = UserCreationForm()
     if request.method == 'POST':
-        if models.User.objects.filter(username=request.POST.get("username")).count() == 0:
-            username = request.POST.get("username")
-            password = request.POST.get("password")
-            user = models.User(username=username, password=password)
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.username = user.username
             user.save()
+            login(request,user)
             return redirect('home')
+    context = {'form':form}
+    return render(request, 'base/signUp.html', context)
 
-    return render(request, 'base/signUp.html')
-
-def login(request):
+def loginFun(request):
     return render(request, 'base/login.html')
 
 def deleteRecipe(request, id):

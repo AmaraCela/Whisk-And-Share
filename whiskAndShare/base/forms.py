@@ -6,4 +6,3 @@ class FormRecipe(ModelForm):
         model = models.Recipe
         fields = '__all__'
         exclude = ['author','date']
-        
