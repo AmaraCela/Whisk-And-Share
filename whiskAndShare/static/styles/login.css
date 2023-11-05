@@ -3,8 +3,24 @@ body{
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    background-color: #d6c8c8;
 }
 
 .login-div{
-    background-color: #caafaf;
+    background-color: #ffcb0052;
+    width: 40%;
+    height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    margin-top: 10%;
+}
+
+.login-form{
+    display: grid;
+}
+
+label{
+    margin-bottom: 5px;
 }

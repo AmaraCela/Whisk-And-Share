@@ -48,6 +48,14 @@ def signUp(request):
     return render(request, 'base/signUp.html', context)
 
 def loginFun(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(models.User, username = username, password=password)
+        print(user)
+        if user!=None:
+            login(request,user)
+            return redirect('home')
     return render(request, 'base/login.html')
 
 def deleteRecipe(request, id):

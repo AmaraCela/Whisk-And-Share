@@ -6,6 +6,6 @@ urlpatterns = [
     path('addRecipe/',views.addRecipe, name = 'addRecipe'),
     path('profile/', views.profile, name = 'profile'),
     path('signUp/', views.signUp, name='signUp'),
-    path('login/',views.login, name = 'login'),
+    path('login/',views.loginFun, name = 'login'),
     path('deleteRecipe/<str:id>', views.deleteRecipe, name='deleteRecipe'),
 ]
