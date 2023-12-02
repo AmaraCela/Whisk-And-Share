@@ -19,9 +19,8 @@
                 {% endif %}
             </div>
             <img id="comment" src="{% static 'images/comment.png' %}" alt="">
-            <p class="recipe-date">{{recipe.date |timesince }}</p>
+            <p class="recipe-date">{{recipe.date|timesince }}</p>
         </div>
-        <hr>
         {% endfor %}
     </div>
     <div class="side-div">
