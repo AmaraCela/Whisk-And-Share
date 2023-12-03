@@ -8,7 +8,7 @@
         <a href="{% url 'addRecipe'%}">Add recipes</a>
         <a href="">Connections</a>
         <a href="">Notifications</a>
-        <a href="{%url 'profile'%}">
+        <a href="{%url 'profile' request.user.id%}">
            {%if request.user != AnonymousUser %}
            {{request.user}}
            {% else %}

@@ -38,6 +38,7 @@ body{
 
 .home-recipe:hover {
     box-shadow: 5px 5px 5px gray;
+    cursor: pointer;
 }
 
 .recipe-infos{

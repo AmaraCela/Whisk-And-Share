@@ -15,7 +15,7 @@ def home(request):
 
 def addRecipe(request):
     form = forms.FormRecipe()
-    
+
     if request.method=='POST':
         form = forms.FormRecipe(request.POST, request.FILES)
         if form.is_valid():
@@ -26,7 +26,7 @@ def addRecipe(request):
     context = {"form":form}
     return render(request, 'base/addRecipes.html', context)
 
-def profile(request):
+def profile(request, id):
     user = None
     user = request.user
     recipes = models.Recipe.objects.filter(author = request.user)
@@ -64,3 +64,9 @@ def deleteRecipe(request, id):
         return redirect('profile')
     context = {}
     return render(request, 'base/deleteRecipe.html', context)
+
+
+def recipe(request, id):
+    recipe = models.Recipe.objects.get(id=id)
+    context = {"recipe":recipe}
+    return render(request,'base/recipe.html', context)

@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block styles%}
+<link rel="stylesheet" href="{% static 'styles/recipe.css'%}">
+{% endblock styles %}
+{% block content %}
+<div class="recipe-body">
+    <a class="recipe-author" href="{% url 'profile' recipe.author.id %}">@{{recipe.author}} ~ {{recipe.date|timesince}}</a>
+    <hr>
+    <p>{{recipe.title}}</p>
+    <hr>
+    <img src="{{recipe.image}}" alt="no photo">
+    <div class="recipe-div">
+        <p class="recipe-p">
+            {{recipe.body}}
+        </p>
+    </div>
+</div>
+{% endblock content%}

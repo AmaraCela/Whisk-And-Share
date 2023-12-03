@@ -7,7 +7,7 @@
 <div class="inner-home">
     <div class="recepies-div">
         {% for recipe in recipes %}
-        <div class="home-recipe">
+        <div id="{{recipe.id}}" class="home-recipe">
             <div class="recipe-infos">
                 <h4 class="author">@{{recipe.author}}</h4>
                 <h5 class="recipe-title">{{recipe.title}}</h5>
@@ -27,4 +27,13 @@
         <p class="side-p"> You need to add friends to see their activity.</p>
     </div>
 </div>
+<script>
+    let recipes = document.getElementsByClassName("home-recipe");
+    Array.from(recipes).forEach(element => {
+        element.addEventListener("click",()=>{
+            console.log("okay");
+            window.location.href = "recipe/"+element.id;})
+    });
+
+</script>
 {% endblock %}

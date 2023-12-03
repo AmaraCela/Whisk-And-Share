@@ -1,0 +1,15 @@
+.recipe-body{
+    margin: 0;
+    position: relative;
+    top: 100px;
+}
+
+p{
+    margin-top: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 10px;
+}
+
+.recipe-author{
+    color: black;
+}
