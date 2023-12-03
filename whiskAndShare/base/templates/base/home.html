@@ -9,7 +9,8 @@
         {% for recipe in recipes %}
         <div id="{{recipe.id}}" class="home-recipe">
             <div class="recipe-infos">
-                <h4 class="author">@{{recipe.author}}</h4>
+                <h4 class="author">@{{recipe.author}} · {{recipe.date|timesince }}</h4>
+                <hr>
                 <h5 class="recipe-title">{{recipe.title}}</h5>
                 <p class="recipe-body">{{recipe.body}}</p>
             </div>
@@ -19,7 +20,6 @@
                 {% endif %}
             </div>
             <img id="comment" src="{% static 'images/comment.png' %}" alt="">
-            <p class="recipe-date">{{recipe.date|timesince }}</p>
         </div>
         {% endfor %}
     </div>

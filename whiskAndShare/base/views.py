@@ -5,11 +5,15 @@ from whiskAndShare import settings
 from . import forms
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse
 
 # Create your views here.
 
 def home(request):
     recipes = models.Recipe.objects.all()
+    for recipe in recipes:
+        recipe.body = recipe.body[0:200]
+        recipe.body += '...'
     context = {'recipes':recipes}
     return render(request, 'base/home.html', context)
 
@@ -61,7 +65,7 @@ def loginFun(request):
 def deleteRecipe(request, id):
     if request.method == 'POST':
         models.Recipe.objects.get(id=id).delete()
-        return redirect('profile')
+        return redirect(reverse('profile', args=[str(request.user.id)]))
     context = {}
     return render(request, 'base/deleteRecipe.html', context)
 

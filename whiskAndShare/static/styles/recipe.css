@@ -13,3 +13,8 @@ p{
 .recipe-author{
     color: black;
 }
+
+.comment{
+    height: 100px;
+    width: 100px;
+}

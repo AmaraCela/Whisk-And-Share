@@ -6,8 +6,15 @@
 {% block content %}
     <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="Add Recipe">
+        <label for="title">Recipe Title:</label>
+        <input id="title" type="text" name="title" required placeholder="Recipe title...">
+        <br>
+        <label for="body">Recipe Body:</label>
+        <textarea placeholder="Recipe body..." name="body" id="" cols="30" rows="10"></textarea>
+        <br>
+        <label for="file">Enter an image: </label>
+        <input id="file" type="file" name="image">
+        <input id="submit" type="submit" value="Add Recipe">
     </form>
     {% if image != None %}
     <img src="{{image}}" alt="">
