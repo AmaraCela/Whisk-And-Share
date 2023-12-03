@@ -34,3 +34,7 @@ class Reply(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     main_comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
 
+
+class Like(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)

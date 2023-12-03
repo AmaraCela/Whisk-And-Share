@@ -79,13 +79,27 @@ body{
 }
 
 #comment{
-    height: 42px;
-    width: 42px;
+    height: 48px;
+    width: 48px;
     cursor: pointer;
 }
+
+#likes{
+    height: 22px;
+    width: 22px;
+    cursor: pointer;
+    padding-right: 10px;
+}
+
 
 .recipe-title{
     font-family: 'Times New Roman', Times, serif;
     font-size: 20px;
     margin-top: 15px;
+}
+
+
+.comments-div{
+    display: flex;
+    align-items: center;
 }

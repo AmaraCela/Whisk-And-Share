@@ -14,7 +14,10 @@ def home(request):
     for recipe in recipes:
         recipe.body = recipe.body[0:200]
         recipe.body += '...'
-    context = {'recipes':recipes}
+    
+   
+    likes = models.Like.objects.filter(recipe__in=recipes)
+    context = {'recipes':recipes, 'likes':likes}
     return render(request, 'base/home.html', context)
 
 def addRecipe(request):

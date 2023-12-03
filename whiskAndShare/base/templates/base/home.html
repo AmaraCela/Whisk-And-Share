@@ -19,7 +19,13 @@
                 <img src="{{recipe.image}}" alt="nothing" class="recipe-img">
                 {% endif %}
             </div>
-            <img id="comment" src="{% static 'images/comment.png' %}" alt="">
+            <div class="comments-div">
+                <img id="likes" src="{% static 'images/heart.png' %}" alt="">
+                <p>{{likes.count}} likes</p>
+                <img id="comment" src="{% static 'images/comment.png' %}" alt="">
+                <p>y comments</p>
+            </div>
+            
         </div>
         {% endfor %}
     </div>
