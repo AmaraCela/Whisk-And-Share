@@ -20,10 +20,10 @@
                 {% endif %}
             </div>
             <div class="comments-div">
-                <img id="likes" src="{% static 'images/heart.png' %}" alt="">
+                <img class="likes" id="likes" src="{% static 'images/heart.png' %}" alt="">
                 <p>{{likes.count}} likes</p>
-                <img id="comment" src="{% static 'images/comment.png' %}" alt="">
-                <p>y comments</p>
+                <img class="comments" id="comment" src="{% static 'images/comment.png' %}" alt="">
+                <p>{{comments.count}} comments</p>
             </div>
             
         </div>
@@ -40,6 +40,6 @@
             console.log("okay");
             window.location.href = "recipe/"+element.id;})
     });
-
+ 
 </script>
 {% endblock %}

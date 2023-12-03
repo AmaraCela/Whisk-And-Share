@@ -17,7 +17,8 @@ def home(request):
     
    
     likes = models.Like.objects.filter(recipe__in=recipes)
-    context = {'recipes':recipes, 'likes':likes}
+    comments = models.Comment.objects.filter(recipe__in=recipes)
+    context = {'recipes':recipes, 'likes':likes, 'comments':comments}
     return render(request, 'base/home.html', context)
 
 def addRecipe(request):
