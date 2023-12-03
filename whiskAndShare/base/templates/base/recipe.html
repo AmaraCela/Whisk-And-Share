@@ -9,11 +9,16 @@
     <hr>
     <p>{{recipe.title}}</p>
     <hr>
-    <img src="{{recipe.image}}" alt="no photo">
+    {% if recipe.image %}
+        <img src="{{recipe.image}}" alt="nothing">
+    {% endif %}
     <div class="recipe-div">
         <p class="recipe-p">
             {{recipe.body}}
         </p>
+
+        <img src="{% static 'images/comment.png' %}" alt="comment">
+        
     </div>
 </div>
 {% endblock content%}

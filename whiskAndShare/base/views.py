@@ -68,5 +68,6 @@ def deleteRecipe(request, id):
 
 def recipe(request, id):
     recipe = models.Recipe.objects.get(id=id)
+    print(recipe.image.url)
     context = {"recipe":recipe}
     return render(request,'base/recipe.html', context)

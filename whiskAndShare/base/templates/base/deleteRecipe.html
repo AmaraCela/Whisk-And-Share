@@ -5,6 +5,6 @@
     {% csrf_token %}
     <input type="submit" value="Yes">
 </form>
-<a href="{% url 'profile' %}">Go back</a>
+<a href="{% url 'profile' request.user.id %}">Go back</a>
 <!-- {% endblock content %} -->
 
