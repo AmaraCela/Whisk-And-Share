@@ -104,3 +104,8 @@ body{
     display: flex;
     align-items: center;
 }
+
+.c-div, .l-div{
+    display: flex;
+    align-items: center;
+}

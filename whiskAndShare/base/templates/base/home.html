@@ -7,8 +7,8 @@
 <div class="inner-home">
     <div class="recepies-div">
         {% for recipe in recipes %}
-        <div id="{{recipe.id}}" class="home-recipe">
-            <div class="recipe-infos">
+        <div class="home-recipe">
+            <div id="{{recipe.id}}" class="recipe-infos">
                 <h4 class="author">@{{recipe.author}} · {{recipe.date|timesince }}</h4>
                 <hr>
                 <h5 class="recipe-title">{{recipe.title}}</h5>
@@ -20,10 +20,14 @@
                 {% endif %}
             </div>
             <div class="comments-div">
-                <img class="likes" id="likes" src="{% static 'images/heart.png' %}" alt="">
-                <p>{{likes.count}} likes</p>
-                <img class="comments" id="comment" src="{% static 'images/comment.png' %}" alt="">
-                <p>{{comments.count}} comments</p>
+                <div class="l-div" id="{{recipe.id}}">
+                    <img class="likes {{recipe.liked}}" id="likes" src="{% static 'images/heart.png' %}" alt="">
+                    <p>{{recipe.likes.count}}</p>
+                </div>
+                <div class="c-div" >
+                    <img class="comments" id="comment" src="{% static 'images/comment.png' %}" alt="">
+                    <p>{{recipe.comments.count}} comments</p>
+                </div>
             </div>
             
         </div>
@@ -34,12 +38,62 @@
     </div>
 </div>
 <script>
-    let recipes = document.getElementsByClassName("home-recipe");
+    let recipes = document.getElementsByClassName("recipe-infos");
+
+    function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (const element of cookies) {
+            const cookie = element.trim();
+            // Check if the cookie name matches the desired name
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
     Array.from(recipes).forEach(element => {
         element.addEventListener("click",()=>{
-            console.log("okay");
             window.location.href = "recipe/"+element.id;})
     });
- 
+    
+    Array.from(document.getElementsByClassName("l-div")).forEach(element=>{
+        element.addEventListener("click",()=>{
+            if(element.children[0].classList[1]=='False')
+            {
+           let url = `like/${element.id}`;
+           fetch(url,
+           {method:'POST',
+           headers: {
+            "X-Requested-With": "XMLHttpRequest",
+            "X-CSRFToken": getCookie('csrftoken'),
+        }
+           }).then(response=>response.json()).then(()=>{
+            element.children[1].innerText = parseInt(element.children[1].innerText)+1;
+            element.children[0].classList.remove('False');
+            element.children[0].classList.add('True')}
+           )
+        }
+        else{
+        let url = `unlike/${element.id}`;
+        fetch(url,
+        {
+            method:'POST',
+            headers:{
+                "X-Requested-With": "XMLHttpRequest",
+            "X-CSRFToken": getCookie('csrftoken'),
+            }
+        }).then(response=>response.json()).then(()=>{
+            element.children[1].innerText = parseInt(element.children[1].innerText)-1;
+            element.children[0].classList.remove('True');
+            element.children[0].classList.add('False')
+        })
+        }
+})});
+    
 </script>
 {% endblock %}

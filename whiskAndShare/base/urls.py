@@ -8,5 +8,7 @@ urlpatterns = [
     path('signUp/', views.signUp, name='signUp'),
     path('login/',views.loginFun, name = 'login'),
     path('deleteRecipe/<str:id>', views.deleteRecipe, name='deleteRecipe'),
-    path('recipe/<str:id>', views.recipe, name='recipe')
+    path('recipe/<str:id>', views.recipe, name='recipe'),
+    path('like/<str:recipe_id>',views.incrementLikes, name='like'),
+    path('unlike/<str:recipe_id>',views.decrementLikes, name='unlike'),
 ]

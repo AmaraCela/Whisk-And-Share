@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponseBadRequest, JsonResponse
 from . import models
 from whiskAndShare import settings
 from . import forms
@@ -14,11 +14,13 @@ def home(request):
     for recipe in recipes:
         recipe.body = recipe.body[0:200]
         recipe.body += '...'
-    
-   
-    likes = models.Like.objects.filter(recipe__in=recipes)
-    comments = models.Comment.objects.filter(recipe__in=recipes)
-    context = {'recipes':recipes, 'likes':likes, 'comments':comments}
+        recipe.likes = recipe.like_set.all()
+        recipe.comments = recipe.comment_set.all()
+        recipe.liked = False
+        for like in recipe.likes:
+            if like.author == request.user:
+                recipe.liked = True
+    context = {'recipes':recipes}
     return render(request, 'base/home.html', context)
 
 def addRecipe(request):
@@ -79,3 +81,26 @@ def recipe(request, id):
     print(recipe.image.url)
     context = {"recipe":recipe}
     return render(request,'base/recipe.html', context)
+
+
+def incrementLikes(request, recipe_id):
+    is_ajax = request.headers.get('X-requested-with') == 'XMLHttpRequest'
+
+    if is_ajax:
+        if request.method=='POST':
+            models.Like.objects.create(recipe=models.Recipe.objects.get(id=recipe_id),author = request.user)
+            return JsonResponse({"status":True})
+        else:
+            return JsonResponse({"status":False})
+    return HttpResponseBadRequest('Invalid request')
+
+def decrementLikes(request, recipe_id):
+    is_ajax = request.headers.get('X-requested-with') == 'XMLHttpRequest'
+
+    if is_ajax:
+        if request.method == 'POST':
+            models.Like.objects.get(recipe=models.Recipe.objects.get(id=recipe_id), author=request.user).delete()
+            return JsonResponse({"status":False})
+        else:
+            return JsonResponse({"status":True})
+    return HttpResponseBadRequest("Invalid Request")
