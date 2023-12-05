@@ -34,6 +34,7 @@ body{
     padding: 10px;
     margin: 10px;
     background-color: #d6c8c8;
+    position: relative;
 }
 
 .home-recipe:hover {
@@ -103,9 +104,33 @@ body{
 .comments-div{
     display: flex;
     align-items: center;
+    width: 100%;
 }
+
 
 .c-div, .l-div{
     display: flex;
     align-items: center;
+}
+    
+
+.comment-form-div{
+    position: absolute;
+    width: 91%;
+    margin: 20px;
+    background-color: aquamarine;
+    transition: top 2000ms;
+    top: 0px;
+    height: 300px;
+    margin-left: 35px;
+    z-index: -1;
+    display: none;
+}
+
+
+.full-recipe-div
+{
+    position: relative;
+    transition: top 2000ms;
+    top: 0px;
 }

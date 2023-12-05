@@ -7,6 +7,7 @@
 <div class="inner-home">
     <div class="recepies-div">
         {% for recipe in recipes %}
+        <div class="full-recipe-div" id="{{recipe.id}}">
         <div class="home-recipe">
             <div id="{{recipe.id}}" class="recipe-infos">
                 <h4 class="author">@{{recipe.author}} · {{recipe.date|timesince }}</h4>
@@ -20,16 +21,28 @@
                 {% endif %}
             </div>
             <div class="comments-div">
+                
                 <div class="l-div" id="{{recipe.id}}">
+                    {% if recipe.liked %}
+                    <img class="likes {{recipe.liked}}" id="likes" src="{% static 'images/heart.png' %}" alt="">
+                    {% else %}
                     <img class="likes {{recipe.liked}}" id="likes" src="{% static 'images/heart-removebg-preview.png' %}" alt="">
+                    {% endif %}
+                    
                     <p>{{recipe.likes.count}}</p>
                 </div>
-                <div class="c-div" >
+                <div class="c-div" id="{{recipe.id}}">
                     <img class="comments" id="comment" src="{% static 'images/comment.png' %}" alt="">
                     <p>{{recipe.comments.count}} comments</p>
                 </div>
-            </div>
-            
+                </div>
+        </div>
+        <div class="comment-form-div" id="{{recipe.id}}">
+                <form action="" method="POST">
+                    {%csrf_token%}
+                    <input type="text" name="comment" class="comment-input">
+                </form>
+        </div>
         </div>
         {% endfor %}
     </div>
@@ -97,6 +110,23 @@
         })
         }
 })});
+
+    Array.from(document.getElementsByClassName("c-div")).forEach(element=>{
+        element.addEventListener("click",()=>{
+            Array.from(document.getElementsByClassName("comment-form-div")).forEach(element1=>{
+                if (element1.id == element.id)
+                {
+                    element1.style.display = 'block';
+                    element1.style.top="100px";
+                    let id = parseInt(element1.id)-1;
+                    document.querySelector(`.full-recipe-div[id="${id}"]`).style.top="100px"
+                   
+                }
+            })
+
+        });
+    });
+
     
 </script>
 {% endblock %}
