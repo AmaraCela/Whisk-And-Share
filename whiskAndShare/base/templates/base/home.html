@@ -21,7 +21,7 @@
             </div>
             <div class="comments-div">
                 <div class="l-div" id="{{recipe.id}}">
-                    <img class="likes {{recipe.liked}}" id="likes" src="{% static 'images/heart.png' %}" alt="">
+                    <img class="likes {{recipe.liked}}" id="likes" src="{% static 'images/heart-removebg-preview.png' %}" alt="">
                     <p>{{recipe.likes.count}}</p>
                 </div>
                 <div class="c-div" >
@@ -75,7 +75,9 @@
            }).then(response=>response.json()).then(()=>{
             element.children[1].innerText = parseInt(element.children[1].innerText)+1;
             element.children[0].classList.remove('False');
-            element.children[0].classList.add('True')}
+            element.children[0].classList.add('True');
+            element.children[0].src = "{% static 'images/heart.png' %}";
+            }
            )
         }
         else{
@@ -90,7 +92,8 @@
         }).then(response=>response.json()).then(()=>{
             element.children[1].innerText = parseInt(element.children[1].innerText)-1;
             element.children[0].classList.remove('True');
-            element.children[0].classList.add('False')
+            element.children[0].classList.add('False');
+            element.children[0].src = "{% static 'images/heart-removebg-preview.png' %}";
         })
         }
 })});
